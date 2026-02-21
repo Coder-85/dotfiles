@@ -1,0 +1,27 @@
+#!/usr/bin/bash
+
+# variables
+config=$HOME/.config/hypr
+scripts=$config/scripts
+
+# notification daemon
+swaync &
+
+# waybar
+$scripts/launch_waybar &
+$scripts/tools/dynamic &
+
+# effects
+$scripts/rgb &
+
+# nm-applet
+nm-applet &
+
+# other
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
+notify-send -a aurora "hello $(whoami)" &
+wl-paste --watch cliphist store &
+
+# Restore alsa settings
+alsactl --file ~/.config/asound.state restore

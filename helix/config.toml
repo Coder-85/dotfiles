@@ -1,0 +1,31 @@
+theme = "aurora"
+[editor]
+line-number = "relative"
+undercurl = true
+
+[editor.lsp]
+snippets = false
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.soft-wrap]
+enable = true
+
+[keys.insert]
+"C-o" = "normal_mode"
+
+[keys.normal]
+"S-l" = "select_mode"
+"S-h" = "select_mode"
+"S-j" = "select_mode"
+"S-k" = "select_mode"
+
+[keys.select]
+"C-o" = "normal_mode"
+"S-l" = "extend_char_right"
+"S-h" = "extend_char_left"
+"S-j" = "extend_line_down"
+"S-k" = "extend_line_up"

@@ -1,0 +1,116 @@
+
+# ---------------- UI ----------------
+"ui.background"              = { bg = "bg", fg = "fg" }
+"ui.window"                  = { bg = "bg" }
+
+"ui.popup"                   = { bg = "bg_soft", fg = "fg" }
+"ui.help"                    = { bg = "bg_soft", fg = "fg" }
+"ui.menu"                    = { bg = "bg_soft", fg = "fg" }
+"ui.menu.selected"           = { bg = "bg_highlight", fg = "fg" }
+
+"ui.cursor"                  = { bg = "cursor", fg = "bg" }
+"ui.cursor.primary"          = { bg = "cursor", fg = "bg" }
+"ui.cursor.match"            = { bg = "bg_highlight" }
+
+"ui.selection"               = { bg = "bg_highlight" }
+"ui.selection.primary"       = { bg = "bg_highlight" }
+
+"ui.linenr"                  = { fg = "black" }
+"ui.linenr.selected"         = { fg = "fg" }
+
+"ui.cursorline.primary"      = { bg = "bg_soft" }
+
+"ui.statusline"              = { bg = "bg_highlight", fg = "fg" }
+"ui.statusline.inactive"     = { bg = "bg_soft", fg = "fg" }
+"ui.statusline.insert"       = { bg = "yellow", fg = "bg" }
+"ui.statusline.select"       = { bg = "magenta", fg = "bg" }
+
+"ui.bufferline"              = { bg = "bg_soft", fg = "fg" }
+"ui.bufferline.active"       = { bg = "bg_highlight", fg = "magenta" }
+"ui.bufferline.background"   = { bg = "bg" }
+
+"ui.text"                    = { fg = "fg" }
+"ui.text.focus"              = { fg = "white" }
+"ui.text.inactive"           = { fg = "black" }
+"ui.text.directory"          = { fg = "blue" }
+
+"ui.virtual.whitespace"      = { fg = "bg_highlight" }
+"ui.virtual.wrap"            = { fg = "bg_highlight" }
+"ui.virtual.ruler"           = { bg = "bg_soft" }
+"ui.virtual.indent-guide"    = { fg = "bg_highlight" }
+"ui.virtual.inlay-hint"      = { fg = "black" }
+"ui.virtual.jump-label"      = { fg = "yellow", modifiers = ["bold"] }
+
+"ui.highlight.frameline"     = { bg = "bg_highlight" }
+
+"ui.debug.active"            = { fg = "yellow" }
+"ui.debug.breakpoint"        = { fg = "red" }
+
+"ui.picker.header.column"            = { underline.style = "line" }
+"ui.picker.header.column.active"     = { fg = "white", underline.style = "line" }
+
+# ---------------- SYNTAX ----------------
+"comment"                  = { fg = "#6A9955", modifiers = ["italic"] }
+
+"variable"                 = { fg = "#9CDCFE" }
+"variable.parameter"       = { fg = "#9CDCFE" }
+"variable.other.member"    = { fg = "#9CDCFE" }
+"variable.builtin"         = { fg = "#569CD6" }
+
+"type"                     = { fg = "#4EC9B0" }
+"type.builtin"             = { fg = "#4EC9B0" }
+"constructor"              = { fg = "#4EC9B0" }
+
+"constant"                 = { fg = "#4FC1FF" }
+"constant.builtin"         = { fg = "#569CD6" }
+"constant.numeric"         = { fg = "#B5CEA8" }
+"constant.character"       = { fg = "#CE9178" }
+"constant.character.escape"= { fg = "#D7BA7D" }
+
+"string"                   = { fg = "#CE9178" }
+"string.regexp"            = { fg = "#D7BA7D" }
+
+"function"                 = { fg = "#DCDCAA" }
+"function.builtin"         = { fg = "#DCDCAA" }
+"function.macro"           = { fg = "#569CD6" }
+
+"keyword"                  = { fg = "#569CD6" }
+"keyword.control"          = { fg = "#C586C0" }
+"keyword.directive"        = { fg = "#C586C0" }
+
+"operator"                 = { fg = "#D4D4D4" }
+"punctuation"              = { fg = "#D4D4D4" }
+"punctuation.delimiter"    = { fg = "#D4D4D4" }
+
+"namespace"                = { fg = "#4EC9B0" }
+"module"                   = { fg = "#4EC9B0" }
+"tag"                      = { fg = "#569CD6" }
+"label"                    = { fg = "#569CD6" }
+
+# ---------------- DIAGNOSTICS ----------------
+"warning"                    = { fg = "yellow" }
+"error"                      = { fg = "red" }
+"info"                       = { fg = "blue" }
+"hint"                       = { fg = "cyan" }
+
+"diagnostic.error".underline = { color = "red", style = "curl" }
+"diagnostic".underline       = { color = "yellow", style = "curl" }
+"diagnostic.unnecessary"     = { modifiers = ["dim"] }
+"diagnostic.deprecated"      = { modifiers = ["crossed_out"] }
+
+# ---------------- PALETTE ----------------
+[palette]
+bg              = "#191724"
+bg_soft         = "#1E1E2E"
+bg_highlight    = "#575268"
+fg              = "#D9E0EE"
+cursor          = "#F5E0DC"
+
+black           = "#6E6C7E"
+red             = "#F28FAD"
+green           = "#ABE9B3"
+yellow          = "#FAE3B0"
+blue            = "#96CDFB"
+magenta         = "#F5C2E7"
+cyan            = "#89DCEB"
+white           = "#D9E0EE"

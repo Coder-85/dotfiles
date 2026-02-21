@@ -1,0 +1,1 @@
+{"class": "window", "text": "kitty: fly_is_kitty", "tooltip": "kitty: fly_is_kitty"}

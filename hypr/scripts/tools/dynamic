@@ -1,0 +1,92 @@
+#!/usr/bin/env python3
+
+import socket, os, json, sys, time, subprocess
+
+MAX_LEN = 70
+
+def get_socket_path():
+    runtime = os.environ.get("XDG_RUNTIME_DIR")
+    sig = os.environ.get("HYPRLAND_INSTANCE_SIGNATURE")
+    if not runtime or not sig:
+        sys.exit(1)
+    return f"{runtime}/hypr/{sig}/.socket2.sock"
+
+def output(text):
+    if text:
+        print(json.dumps({"class": "window", "text": text, "tooltip": text}), flush=True)
+    else:
+        print(json.dumps({"class": "none", "text": ""}), flush=True)
+
+def format_text(win_class, title):
+    if not title:
+        return ""
+    if len(title) > MAX_LEN:
+        title = title[:MAX_LEN] + "..."
+    return f"{win_class}: {title}"
+
+def hyprctl_json(cmd):
+    try:
+        result = subprocess.run(
+            ["hyprctl", cmd, "-j"],
+            capture_output=True, text=True, timeout=0.2
+        )
+        return json.loads(result.stdout) if result.stdout.strip() else {}
+    except Exception:
+        return {}
+
+def listen():
+    last_text = ""
+    last_valid_window = None
+
+    while True:
+        try:
+            sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+            sock.connect(get_socket_path())
+
+            while True:
+                data = sock.recv(4096).decode()
+                if not data:
+                    break
+
+                for line in data.strip().split("\n"):
+                    if not line.startswith("activewindow>>"):
+                        continue
+
+                    active = hyprctl_json("activewindow")
+
+                    if active and active.get("title") and active.get("class"):
+                        win_class = active["class"]
+                        title = active["title"]
+                        last_valid_window = (win_class, title)
+                        text = format_text(win_class, title)
+                    else:
+                        ws = hyprctl_json("activeworkspace")
+                        ws_id = ws.get("id") if ws else None
+
+                        clients = hyprctl_json("clients") or []
+
+                        mapped_ws_clients = [
+                            c for c in clients
+                            if c.get("mapped", False) and c.get("workspace", {}).get("id") == ws_id
+                        ]
+
+                        if mapped_ws_clients:
+                            if last_valid_window:
+                                text = format_text(*last_valid_window)
+                            else:
+                                top_client = max(mapped_ws_clients, key=lambda c: c.get("focusHistoryID", 0))
+                                last_valid_window = (top_client.get("class", ""), top_client.get("title", ""))
+                                text = format_text(*last_valid_window)
+                        else:
+                            text = ""
+                            last_valid_window = None
+
+                    if text != last_text:
+                        output(text)
+                        last_text = text
+
+        except Exception:
+            time.sleep(0.5)
+
+if __name__ == "__main__":
+    listen()
