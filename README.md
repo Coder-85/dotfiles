@@ -3,7 +3,7 @@ My personal dotfiles based on [Aurora](https://github.com/flickowoa/dotfiles/tre
 # Dependencies
 For arch linux(Some are AUR packages):
 ```
-hyprland-git waybar cava waybar-mpris-git python rustup kitty fish wofi xdg-desktop-portal-hyprland-git tty-clock-git swaylock grim wofi-emoji slurp starship jq macOS-hypr apple_cursor swaync wl-clipboard swaylock-effects-git helix neofetch
+hyprland-git waybar cava waybar-mpris-git python rustup kitty fish wofi xdg-desktop-portal-hyprland-git tty-clock-git swaylock grim wofi-emoji slurp starship jq macOS-hypr apple_cursor swaync wl-clipboard swaylock-effects-git helix neofetch socat
 ```
 
 ## For window borders
