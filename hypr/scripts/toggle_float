@@ -1,0 +1,13 @@
+#!/bin/bash
+
+STATE="/tmp/hypr_float_mode"
+
+if [ -f "$STATE" ]; then
+    hyprctl keyword "windowrule[float_mode]:enable false"
+    rm "$STATE"
+    notify-send "Float mode OFF"
+else
+    hyprctl keyword "windowrule[float_mode]:enable true"
+    touch "$STATE"
+    notify-send "Float mode ON"
+fi
